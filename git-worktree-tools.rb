@@ -5,12 +5,9 @@ class GitWorktreeTools < Formula
   sha256 "e9124969a76b6642e646577e57039feca80ba1e4da9844e3f504ba6e309d532d"
   license "MIT"
 
-  # Uses system-installed dependencies (doesn't force installation)
-  uses_from_macos "git"
-
-  # Optional dependencies - tools work with system versions
-  depends_on "node" => :optional
-  depends_on "jq" => :optional
+  # No dependencies declared - these are shell scripts that use system tools
+  # Users need: git, node.js, jq (optional)
+  # See caveats for requirements
 
   def install
     bin.install "bin/copy-claude-config.sh"
