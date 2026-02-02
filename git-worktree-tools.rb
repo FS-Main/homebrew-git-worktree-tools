@@ -5,8 +5,11 @@ class GitWorktreeTools < Formula
   sha256 "e9124969a76b6642e646577e57039feca80ba1e4da9844e3f504ba6e309d532d"
   license "MIT"
 
-  depends_on "git"
-  depends_on "node"
+  # Uses system-installed dependencies (doesn't force installation)
+  uses_from_macos "git"
+
+  # Optional dependencies - tools work with system versions
+  depends_on "node" => :optional
   depends_on "jq" => :optional
 
   def install
@@ -17,6 +20,11 @@ class GitWorktreeTools < Formula
 
   def caveats
     <<~EOS
+      Requirements (must be installed separately):
+        - git (required)
+        - node.js (required for Claude config sync)
+        - jq (optional, for advanced cleanup)
+
       To complete the installation, add this line to your ~/.bashrc or ~/.zshrc:
 
         source $(brew --prefix)/opt/git-worktree-tools/worktree-helper.sh
@@ -29,6 +37,9 @@ class GitWorktreeTools < Formula
         gwr [branch]     - Remove a worktree
         gwl              - List all worktrees
         gwh              - Show help
+
+      Note: If Homebrew installation fails due to Xcode requirements,
+      use manual installation: https://github.com/FS-Main/git-worktree-tools#manual-installation
     EOS
   end
 
