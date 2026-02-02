@@ -35,14 +35,19 @@ Once installed and configured, you'll have access to these commands:
 - `gwl` - List all worktrees
 - `gwh` - Show detailed help
 
+**Important:** All commands must be run from within a git repository directory.
+
 ## Example
 
 ```bash
+# Navigate to your git repository first
+cd ~/projects/your-project
+
 # Create a worktree for feature branch
 gwa feature/new-login
 
 # Work in the new worktree
-cd ../project-feature-new-login
+cd ../your-project-feature-new-login
 
 # When done, remove the worktree
 gwr
